@@ -26,20 +26,21 @@ with open('input.txt', 'r') as input:
         else:
             # brute force...
             for removed_level_idx in range(len(levels)):
-                adj_levels = levels.copy()
-                adj_levels.pop(removed_level_idx)
+                adjusted_levels = levels.copy()
+                adjusted_levels.pop(removed_level_idx)
 
-                adj_levels_diff = [adj_levels[i] - adj_levels[i-1]
-                                   for i in range(1, len(adj_levels))]
-                adj_levels_diff_abs = [abs(x) for x in adj_levels_diff]
-                adj_levels_diff_sign = [sign(x) for x in adj_levels_diff]
+                adjusted_levels_diff = [adjusted_levels[i] - adjusted_levels[i-1]
+                                        for i in range(1, len(adjusted_levels))]
+                adjusted_levels_diff_abs = [abs(x)
+                                            for x in adjusted_levels_diff]
+                adjusted_levels_diff_sign = [
+                    sign(x) for x in adjusted_levels_diff]
 
-                if min(list(set(adj_levels_diff_abs))) >= 1 and max(list(set(adj_levels_diff_abs))) <= 3 and len(set(adj_levels_diff_sign)) == 1:
+                if min(list(set(adjusted_levels_diff_abs))) >= 1 and max(list(set(adjusted_levels_diff_abs))) <= 3 and len(set(adjusted_levels_diff_sign)) == 1:
                     safe_tolerable_count += 1
                     break
 
         line = input.readline()
-
 
 print('Part 1:', safe_count)
 print('Part 2:', safe_tolerable_count)
