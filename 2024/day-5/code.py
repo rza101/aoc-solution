@@ -1,3 +1,5 @@
+import copy
+
 succeeding_pages_rule = {}
 update_list = []
 
@@ -46,7 +48,7 @@ for update in update_list:
     if is_valid:
         middle_page_sum += update[len(update) // 2]
     else:
-        corrected_update = update.copy()
+        corrected_update = copy.deepcopy(update)
 
         # the logic is to reorder page update from the last index
         # so it have all rules that is on the update

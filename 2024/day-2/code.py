@@ -1,3 +1,6 @@
+import copy
+
+
 def sign(x):
     if x > 0:
         return 1
@@ -27,7 +30,7 @@ with open('input.txt', 'r') as input:
         else:
             # brute force...
             for removed_level_idx in range(len(levels)):
-                adjusted_levels = levels.copy()
+                adjusted_levels = copy.deepcopy(levels)
                 adjusted_levels.pop(removed_level_idx)
 
                 adjusted_levels_diff = [adjusted_levels[i] - adjusted_levels[i-1]
