@@ -93,7 +93,6 @@ for visited_position in modified_visited_position:
                     guard_state[1],
                     (guard_state[2] + 1) % 4
                 )
-
             else:
                 guard_state = (
                     new_guard_position[0],
