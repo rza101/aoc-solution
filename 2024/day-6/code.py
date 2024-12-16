@@ -55,11 +55,6 @@ modified_visited_position.remove(
 obstacle_count = 0
 
 for visited_position in modified_visited_position:
-    # remember that original obstacle is not changed
-    # so the only way to change the path is to put the obstacle in the visited path
-    modified_map_array = copy.deepcopy(map_array)
-    modified_map_array[visited_position[0]][visited_position[1]] = '#'
-
     # now considering direction
     visited_states = set()
     guard_state = (initial_guard_position[0], initial_guard_position[1], 0)
@@ -82,22 +77,28 @@ for visited_position in modified_visited_position:
                     guard_state[0], guard_state[1] - 1)
 
         if new_guard_position[0] < 0 or\
-                new_guard_position[0] > len(modified_map_array) - 1 or\
+                new_guard_position[0] > len(map_array) - 1 or\
                 new_guard_position[1] < 0 or\
-                new_guard_position[1] > len(modified_map_array[0]) - 1:
+                new_guard_position[1] > len(map_array[0]) - 1:
             break
         else:
-            if modified_map_array[new_guard_position[0]][new_guard_position[1]] != '#':
-                guard_state = (
-                    new_guard_position[0],
-                    new_guard_position[1],
-                    guard_state[2]
-                )
-            else:
+            # original obstacle is not changed
+            # so the only way to change the path is to put the obstacle in the visited path
+            # and "applied" with this condition
+            if map_array[new_guard_position[0]][new_guard_position[1]] == '#' or\
+                (new_guard_position[0] == visited_position[0] and
+                    new_guard_position[1] == visited_position[1]):
                 guard_state = (
                     guard_state[0],
                     guard_state[1],
                     (guard_state[2] + 1) % 4
+                )
+
+            else:
+                guard_state = (
+                    new_guard_position[0],
+                    new_guard_position[1],
+                    guard_state[2]
                 )
 
             previous_length = len(visited_states)
