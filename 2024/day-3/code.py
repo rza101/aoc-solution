@@ -4,7 +4,8 @@ import re
 MULTIPLY_STATEMENT_REGEX_PATTERN = r'(?:mul\(([0-9]{1,3}),([0-9]{1,3})\))'
 
 # for part 2, also catch do() and don't(), and later be processed on loop
-MULTIPLY_STATEMENT_WITH_FLAG_REGEX_PATTERN = r'(?:(do\(\))|(don\'t\(\))|mul\(([0-9]{1,3}),([0-9]{1,3})\))'
+MULTIPLY_STATEMENT_WITH_FLAG_REGEX_PATTERN = \
+    r'(?:(do\(\))|(don\'t\(\))|mul\(([0-9]{1,3}),([0-9]{1,3})\))'
 
 multiply_result = 0
 multiply_with_flag_result = 0

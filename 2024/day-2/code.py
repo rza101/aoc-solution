@@ -20,7 +20,8 @@ with open('input.txt', 'r') as input:
         levels_diff_abs = [abs(x) for x in levels_diff]
         levels_diff_sign = [sign(x) for x in levels_diff]
 
-        if min(list(set(levels_diff_abs))) >= 1 and max(list(set(levels_diff_abs))) <= 3 and len(set(levels_diff_sign)) == 1:
+        if min(list(set(levels_diff_abs))) >= 1 and max(list(set(levels_diff_abs))) <= 3 and\
+                len(set(levels_diff_sign)) == 1:
             safe_count += 1
             safe_tolerable_count += 1
         else:
@@ -36,7 +37,9 @@ with open('input.txt', 'r') as input:
                 adjusted_levels_diff_sign = [
                     sign(x) for x in adjusted_levels_diff]
 
-                if min(list(set(adjusted_levels_diff_abs))) >= 1 and max(list(set(adjusted_levels_diff_abs))) <= 3 and len(set(adjusted_levels_diff_sign)) == 1:
+                if min(list(set(adjusted_levels_diff_abs))) >= 1 and\
+                        max(list(set(adjusted_levels_diff_abs))) <= 3 and\
+                        len(set(adjusted_levels_diff_sign)) == 1:
                     safe_tolerable_count += 1
                     break
 
